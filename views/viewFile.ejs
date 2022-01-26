@@ -1,0 +1,46 @@
+<main class="container my-5 overflow-auto">
+    <div class="row justify-content-center my-5">
+        <div class="col col-md-8 col-lg-8 col-xl-6">
+            <label for="search-input" class="form-label mb-3">Search Table :</label>
+            <input type="search" class="form-control  mb-3" id="search-input" placeholder="type to search">
+            <div class="btn-div text-center">
+                <button class="btn btn-primary" id="search-btn">Search</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col" id="table-container">
+            <table class="table table-striped table-hover" id="table">
+                <thead>
+                    <tr class="table-dark ">
+                        <% for ( let header of headers ) { %>
+                            <th scope="col">
+                                <%=header%>
+                            </th><%}%>
+                    </tr>
+                </thead>
+                <tbody id="t-body">
+                    <% for ( let rowObj of dataArray ) { %>
+                        <tr>
+                            <% for ( let item in rowObj ) { %>
+                                <td class="">
+                                    <%=rowObj[item] %>
+                                </td>
+                                <%}%>
+                        </tr>
+                        <%}%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item  <%=paginationObj.prevClass %>"><a class="page-link" href ="/view-file?fileId=<%=fileId%>&page=<%=pageNo-1%>">Previous</a></li>
+              <li class="page-item active"><a class="page-link " href="#"><%=pageNo%></a></li>
+              <li class="page-item  <%=paginationObj.nextClass%> "><a class="page-link" href="/view-file?fileId=<%=fileId%>&page=<%=parseInt(pageNo)+1%>">Next</a></li>
+            </ul>
+          </nav>
+    </footer>
+    <script src="js.viewFile.js"></script>
+</main>
